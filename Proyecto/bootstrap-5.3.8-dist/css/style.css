@@ -1,118 +1,254 @@
+/* ============================================
+   DeliPostres — Estilos personalizados
+   ============================================ */
+
 :root {
-    --pastel-pink: #ffd1dc;
-    --pastel-purple: #e2d1f9;
-    --pastel-mint: #d1f7e4;
-    --pastel-yellow: #fff8d1;
-    --pastel-blue: #d1e8ff;
+    --pink:   #ffd1dc;
+    --purple: #e2d1f9;
+    --mint:   #d1f7e4;
+    --yellow: #fff8d1;
+    --blue:   #d1e8ff;
+    --pink-dark:   #e8a0b0;
+    --purple-dark: #b89be0;
+    --mint-dark:   #8eddb8;
+    --text-dark: #333;
 }
 
-/* Navbar */
-.navbar {
-    background: linear-gradient(90deg, var(--pastel-pink), var(--pastel-purple));
+/* ---- General ---- */
+body {
+    color: var(--text-dark);
+    scroll-behavior: smooth;
 }
 
-/* Hero con carrusel */
-.hero .carousel-item img {
-    max-height: 1200px;
-    width: 100%;
+/* ---- Navbar ---- */
+.navbar-custom {
+    background: linear-gradient(90deg, var(--pink), var(--purple));
+}
+.navbar-custom .navbar-brand,
+.navbar-custom .nav-link {
+    color: #444 !important;
+    font-weight: 500;
+}
+.navbar-custom .nav-link:hover,
+.navbar-custom .nav-link.active {
+    color: #9b59b6 !important;
+}
+.btn-carrito {
+    background-color: #9b59b6;
+    color: #fff;
+    border-radius: 20px;
+    padding: 0.4rem 1rem;
+    font-weight: 600;
+}
+.btn-carrito:hover {
+    background-color: #7d3c98;
+    color: #fff;
+}
+
+/* ---- Hero ---- */
+.hero {
+    position: relative;
+    margin-top: 56px; /* altura navbar */
+}
+.hero-img {
+    height: 85vh;
+    min-height: 400px;
     object-fit: cover;
-    display: block;
-    filter: brightness(60%);
+    filter: brightness(55%);
+}
+.hero-overlay {
+    position: absolute;
+    inset: 0;
+    z-index: 10;
+    pointer-events: none;
+}
+.hero-overlay .btn {
+    pointer-events: all;
+}
+.hero-title {
+    text-shadow: 0 2px 8px rgba(0,0,0,0.5);
+    font-size: clamp(2rem, 5vw, 3.5rem);
+}
+.hero-subtitle {
+    text-shadow: 0 1px 4px rgba(0,0,0,0.4);
+    font-size: clamp(1rem, 2.5vw, 1.3rem);
+}
+.btn-hero-primary {
+    background-color: var(--pink);
+    color: #333;
+    border: none;
+    border-radius: 25px;
+    font-weight: 600;
+}
+.btn-hero-primary:hover {
+    background-color: var(--pink-dark);
+    color: #333;
+}
+.btn-hero-secondary {
+    background-color: transparent;
+    color: #fff;
+    border: 2px solid #fff;
+    border-radius: 25px;
+    font-weight: 600;
+}
+.btn-hero-secondary:hover {
+    background-color: rgba(255,255,255,0.15);
+    color: #fff;
 }
 
-.hero .text-overlay {
+/* ---- Barra de beneficios ---- */
+.benefits-bar {
+    background: #fff;
+    border-bottom: 1px solid #f0e6f6;
+}
+.benefits-bar .text-pink   { color: #e07095; }
+.benefits-bar .text-purple { color: #9b59b6; }
+.benefits-bar .text-mint   { color: #27ae60; }
+.benefits-bar .text-yellow { color: #f39c12; }
+
+/* ---- Secciones con fondo ---- */
+.section-mint   { background: linear-gradient(135deg, var(--mint), var(--yellow)); }
+.section-purple { background: linear-gradient(135deg, var(--purple), var(--pink)); }
+.section-yellow { background: linear-gradient(135deg, var(--yellow), var(--blue)); }
+.section-blue   { background: linear-gradient(135deg, var(--blue), var(--mint)); }
+.section-pink   { background: linear-gradient(135deg, var(--pink), var(--yellow)); }
+
+/* ---- Feature icons (Nosotros) ---- */
+.feature-icon {
+    width: 70px;
+    height: 70px;
+    background: rgba(255,255,255,0.7);
+    border-radius: 50%;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}
+.text-pink   { color: #e07095 !important; }
+.text-purple { color: #9b59b6 !important; }
+.text-mint   { color: #27ae60 !important; }
+.text-yellow { color: #f39c12 !important; }
+
+/* ---- Categorías ---- */
+.cat-card {
+    background: rgba(255,255,255,0.75);
+    transition: transform 0.3s ease, box-shadow 0.3s ease;
+    border: none;
+}
+.cat-card:hover {
+    transform: translateY(-6px);
+    box-shadow: 0 8px 24px rgba(0,0,0,0.1);
+}
+
+/* ---- Productos ---- */
+.product-card {
+    border-radius: 16px;
+    overflow: hidden;
+    background: rgba(255,255,255,0.9);
+    transition: transform 0.3s ease, box-shadow 0.3s ease;
+}
+.product-card:hover {
+    transform: translateY(-6px);
+    box-shadow: 0 12px 32px rgba(0,0,0,0.12);
+}
+.product-img-wrap {
+    position: relative;
+    overflow: hidden;
+}
+.product-img-wrap img {
+    width: 100%;
+    height: 230px;
+    object-fit: cover;
+    transition: transform 0.4s ease;
+}
+.product-card:hover .product-img-wrap img {
+    transform: scale(1.05);
+}
+.badge-popular, .badge-nuevo {
     position: absolute;
-    top: 50%;
-    left: 50%;
-    transform: translate(-50%, -60%);
-    text-align: center;
-    color: #333;
+    top: 12px;
+    left: 12px;
+    padding: 4px 10px;
+    border-radius: 20px;
+    font-size: 0.78rem;
+    font-weight: 600;
     z-index: 2;
 }
+.badge-popular { background-color: var(--yellow); color: #b7770d; }
+.badge-nuevo   { background-color: var(--purple); color: #5b2c9b; }
 
-.hero .text-overlay h1,
-.hero .text-overlay p {
-    background: radial-gradient(circle at center,
-        rgba(255, 209, 220, 0.7),
-        rgba(226, 209, 249, 0.6),
-        rgba(209, 247, 228, 0.5),
-        rgba(255, 248, 209, 0.5),
-        rgba(209, 232, 255, 0.5)
-    );
-    display: inline-block;
-    padding: 0.8rem 1.2rem;
+.price-tag {
+    font-size: 1.3rem;
+    font-weight: 700;
+    color: #9b59b6;
+}
+.btn-comprar {
+    background-color: var(--purple);
+    color: #444;
+    border: none;
     border-radius: 20px;
-    color: #333;
-    backdrop-filter: blur(5px);
+    font-weight: 600;
+    padding: 0.4rem 1rem;
+}
+.btn-comprar:hover {
+    background-color: var(--purple-dark);
+    color: #fff;
 }
 
-/* Secciones con fondos degradados */
-#sobre {
-    background: linear-gradient(135deg, var(--pastel-mint), var(--pastel-yellow));
-}
-
-#categorias {
-    background: linear-gradient(135deg, var(--pastel-purple), var(--pastel-pink));
-}
-
-#recetas {
-    background: linear-gradient(135deg, var(--pastel-yellow), var(--pastel-blue));
-}
-
-#testimonios {
-    background: linear-gradient(135deg, var(--pastel-blue), var(--pastel-mint));
-}
-
-footer {
-    background: linear-gradient(135deg, var(--pastel-purple), var(--pastel-pink));
-    color: #333;
-}
-
-/* Cards */
-.pastel-card {
-    background: rgba(255, 255, 255, 0.8);
+/* ---- Opiniones ---- */
+.review-card {
+    background: rgba(255,255,255,0.8);
     transition: transform 0.3s ease;
+}
+.review-card:hover { transform: translateY(-4px); }
+.rating { color: #f39c12; font-size: 1.1rem; }
+.avatar-circle {
+    width: 36px;
+    height: 36px;
+    background: linear-gradient(135deg, var(--pink), var(--purple));
+    border-radius: 50%;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    font-weight: 700;
+    color: #fff;
+    font-size: 0.9rem;
+}
+
+/* ---- Contacto ---- */
+.contact-info a:hover { color: #9b59b6 !important; }
+.contact-form-card {
+    background: rgba(255,255,255,0.9);
+}
+.form-control:focus, .form-select:focus {
+    border-color: #b89be0;
+    box-shadow: 0 0 0 0.2rem rgba(184,155,224,0.25);
+}
+.btn-submit {
+    background: linear-gradient(90deg, #e07095, #9b59b6);
+    color: #fff;
     border: none;
+    border-radius: 25px;
+    padding: 0.7rem;
+    font-weight: 600;
+    font-size: 1rem;
+    transition: opacity 0.3s ease;
+}
+.btn-submit:hover { opacity: 0.9; color: #fff; }
+.btn-submit.btn-success {
+    background: linear-gradient(90deg, #27ae60, #2ecc71) !important;
 }
 
-.pastel-card:hover {
-    transform: translateY(-5px);
+/* ---- Footer ---- */
+.footer-custom {
+    background: linear-gradient(135deg, var(--purple), var(--pink));
+    color: #444;
 }
-
-/* Botones */
-.pastel-pink-btn {
-    background-color: var(--pastel-pink);
-    border: none;
+.footer-icon {
+    color: #555;
+    transition: color 0.2s ease, transform 0.2s ease;
+    text-decoration: none;
 }
-.pastel-pink-btn:hover { background-color: #ffb8c9; }
-
-.pastel-mint-btn {
-    background-color: var(--pastel-mint);
-    border: none;
-}
-.pastel-mint-btn:hover { background-color: #baf0d5; }
-
-.pastel-purple-btn {
-    background-color: var(--pastel-purple);
-    border: none;
-}
-.pastel-purple-btn:hover { background-color: #d0b6f5; }
-
-.pastel-yellow-btn {
-    background-color: var(--pastel-yellow);
-    border: none;
-}
-.pastel-yellow-btn:hover { background-color: #ffef9f; }
-
-.pastel-blue-btn {
-    background-color: var(--pastel-blue);
-    border: none;
-}
-.pastel-blue-btn:hover { background-color: #b9d9ff; }
-
-/* Textos */
-.rating { color: #ffc107; }
-
-.card-title, h1, h2, h3, h4, h5, h6 {
-    color: #333;
+.footer-icon:hover {
+    color: #9b59b6;
+    transform: scale(1.2);
 }
